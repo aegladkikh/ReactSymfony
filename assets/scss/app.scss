@@ -1,0 +1,11 @@
+@import "~bootstrap";
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+
+  strong {
+    margin-right: 1rem;
+  }
+}
