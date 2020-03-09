@@ -7,6 +7,7 @@ import {Alert} from "./components/Alert";
 import {AlertState} from "./context/alert/AlertState";
 import {FirebaseState} from "./context/firebase/FirebaseState";
 import {Footer} from "./components/Footer";
+import {Aside} from "./components/Aside";
 
 export default function App() {
     return (
@@ -16,13 +17,16 @@ export default function App() {
                     <header>
                         <Navbar/>
                     </header>
-                    <main role="main">
-                        <div className="container pt-4">
-                            <Alert/>
-                            <Switch>
-                                <Route path={'/'} exact component={Home}/>
-                                <Route path={'/about'} component={About}/>
-                            </Switch>
+                    <main role="main" className="container pt-4">
+                        <div className="row">
+                            <div className="col-md-8 blog-main">
+                                <Alert/>
+                                <Switch>
+                                    <Route path={'/'} exact component={Home}/>
+                                    <Route path={'/about'} component={About}/>
+                                </Switch>
+                            </div>
+                            <Aside/>
                         </div>
                     </main>
                     <Footer/>
