@@ -9,7 +9,6 @@ const handlers = {
 };
 
 export const firebaseReducer = (state, action) => {
-    console.info(state, action);
     const handle = handlers[action.type] || handlers.DEFAULT;
     return handle(state, action);
 };
