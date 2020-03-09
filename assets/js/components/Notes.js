@@ -7,11 +7,11 @@ export const Notes = ({notes}) => {
     const alert = useContext(AlertContext);
     const firebase = useContext(FirebaseContext);
 
-    const remove = (e, id) => {
+    const remove = (e, note) => {
         e.preventDefault();
 
-        firebase.removeNote(id).then(() => {
-            alert.show('Заметка была удалена', 'success');
+        firebase.removeNote(note.id).then(() => {
+            alert.show('Заметка ' + note.title + ' была удалена', 'success');
         }).catch(() => {
             alert.show('Ошибка', 'danger');
         });
@@ -35,7 +35,7 @@ export const Notes = ({notes}) => {
                             type="button"
                             className="btn btn-outline-danger btn-sm"
                             onClick={(e) => {
-                                remove(e, note.id)
+                                remove(e, note)
                             }}
                         >
                             &times;
