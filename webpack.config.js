@@ -86,8 +86,7 @@ Encore
             throw env_local.error;
         }
 
-        options['process.env'].REACT_APP_DB_URL = JSON.stringify(env.parsed.REACT_APP_DB_URL);
-        options['process.env'].REACT_APP_DB_URL = JSON.stringify(env_local.parsed.REACT_APP_DB_URL);
+        options['process.env'].REACT_APP_DB_URL = (env.parsed.REACT_APP_DB_URL ? JSON.stringify(env.parsed.REACT_APP_DB_URL) : JSON.stringify(env_local.parsed.REACT_APP_DB_URL));
     })
 ;
 
