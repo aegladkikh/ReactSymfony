@@ -19,10 +19,6 @@ export const FirebaseState = ({children}) => {
         showLoader();
         const res = await Axios.get(`${url}/notes.json`);
 
-        const note = await Axios.get('/api/note/');
-
-        console.info(note.data);
-
         if (res.data !== null) {
             const payload = Object.keys(res.data).map(key => {
                 return {
