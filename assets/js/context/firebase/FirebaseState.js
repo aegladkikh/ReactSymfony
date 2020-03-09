@@ -20,8 +20,6 @@ export const FirebaseState = ({children}) => {
         showLoader();
         const res = await Axios.get(`${url}/notes.json`);
 
-        console.info(res.data);
-
         if (res.data !== null) {
             const payload = Object.keys(res.data).map(key => {
                 return {
@@ -29,8 +27,6 @@ export const FirebaseState = ({children}) => {
                     id: key
                 }
             });
-
-            console.info(payload);
 
             dispatch({type: FETCH_NOTES, payload});
             return;
@@ -52,8 +48,6 @@ export const FirebaseState = ({children}) => {
                 ...note,
                 id: res.data.name
             };
-
-            console.info(payload);
 
             dispatch({type: ADD_NOTE, payload})
         } catch (e) {

@@ -17,8 +17,6 @@ export const Notes = ({notes}) => {
         });
     };
 
-    console.info(notes.length);
-
     return (
         <TransitionGroup component="ul" className="list-group">
             {notes.length === 0 ? '' : notes.map(note => (
