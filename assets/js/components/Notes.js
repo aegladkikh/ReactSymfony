@@ -5,12 +5,12 @@ import {FirebaseContext} from "../context/firebase/firebaseContext";
 
 export const Notes = ({notes}) => {
     const alert = useContext(AlertContext);
-    const {removeNote} = useContext(FirebaseContext);
+    const firebase = useContext(FirebaseContext);
 
     const remove = (e, id) => {
         e.preventDefault();
 
-        removeNote(id).then(() => {
+        firebase.removeNote(id).then(() => {
             alert.show('Заметка была удалена', 'success');
         }).catch(() => {
             alert.show('Ошибка', 'danger');
