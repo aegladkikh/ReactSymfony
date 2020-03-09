@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+var dotenv = require('dotenv');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -73,6 +74,21 @@ Encore
     // uncomment if you use API Platform Admin (composer req api-admin)
     .enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
+    .configureDefinePlugin(options => {
+        const env = dotenv.config();
+        const env_local = dotenv.config({path: './.env.local'});
+
+        if (env.error) {
+            throw env.error;
+        }
+
+        if (env_local.error) {
+            throw env_local.error;
+        }
+
+        options['process.env'].REACT_APP_DB_URL = JSON.stringify(env.parsed.REACT_APP_DB_URL);
+        options['process.env'].REACT_APP_DB_URL = JSON.stringify(env_local.parsed.REACT_APP_DB_URL);
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();
