@@ -4,7 +4,6 @@ import {FirebaseContext} from "./firebaseContext";
 import {firebaseReducer} from "./firebaseReducer";
 import {ADD_NOTE, FETCH_NOTES, REMOVE_NOTE, SHOW_LOADER} from "../types";
 
-// const url = process.env.REACT_APP_DB_URL;
 const url = 'https://reactapp-74641.firebaseio.com';
 
 export const FirebaseState = ({children}) => {
