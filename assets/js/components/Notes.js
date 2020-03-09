@@ -11,7 +11,7 @@ export const Notes = ({notes}) => {
         e.preventDefault();
 
         removeNote(id).then(() => {
-            alert.show('Заметка была удалена', 'info');
+            alert.show('Заметка была удалена', 'success');
         }).catch(() => {
             alert.show('Ошибка', 'danger');
         });

@@ -5,10 +5,6 @@ import {AlertContext} from "../context/alert/alertContext"
 export const Alert = () => {
     const {alert, hide} = useContext(AlertContext);
 
-    useEffect(() => {
-        hide()
-    }, []);
-
     return (
         <CSSTransition
             in={alert.visible}

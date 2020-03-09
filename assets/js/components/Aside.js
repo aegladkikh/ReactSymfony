@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export class Aside extends React.Component{
+export class Aside extends Component {
 
-    render () {
+    render() {
         return (
             <aside className="col-md-4 blog-sidebar">
                 <div className="p-4 mb-3 bg-light rounded">
