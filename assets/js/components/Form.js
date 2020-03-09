@@ -11,7 +11,7 @@ export const Form = () => {
         event.preventDefault();
 
         if (value.trim()) {
-            firebase.addNote(value.trim()).then(r => {
+            firebase.addNote(value.trim()).then(() => {
                 alert.show('Заметка была создана', 'success');
             }).catch(() => {
                 alert.show('Ошибка', 'danger');

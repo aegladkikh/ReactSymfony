@@ -1,13 +1,27 @@
 import React, {useContext} from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {AlertContext} from "../context/alert/alertContext";
+import {FirebaseContext} from "../context/firebase/firebaseContext";
 
-export const Notes = ({notes, onRemove}) => {
+export const Notes = ({notes}) => {
     const alert = useContext(AlertContext);
+    const {removeNote} = useContext(FirebaseContext);
+
+    const remove = (e, id) => {
+        e.preventDefault();
+
+        removeNote(id).then(() => {
+            alert.show('Заметка была удалена', 'info');
+        }).catch(() => {
+            alert.show('Ошибка', 'danger');
+        });
+    };
+
+    console.info(notes.length);
 
     return (
         <TransitionGroup component="ul" className="list-group">
-            {notes.map(note => (
+            {notes.length === 0 ? '' : notes.map(note => (
                 <CSSTransition
                     key={note.id}
                     classNames={'note'}
@@ -22,9 +36,8 @@ export const Notes = ({notes, onRemove}) => {
                         <button
                             type="button"
                             className="btn btn-outline-danger btn-sm"
-                            onClick={() => {
-                                onRemove(note.id)
-                                alert.show('Заметка была удалена', 'success');
+                            onClick={(e) => {
+                                remove(e, note.id)
                             }}
                         >
                             &times;
