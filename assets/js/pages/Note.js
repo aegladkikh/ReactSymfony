@@ -1,0 +1,26 @@
+import React, {Fragment, useState, useContext, useEffect} from 'react';
+import {useParams} from 'react-router-dom'
+import {FirebaseContext} from "../context/firebase/firebaseContext";
+import {Note as _Note} from "../components/Note";
+import {Loader} from "../components/Loader";
+
+export const Note = () => {
+    const id = useParams().id;
+    const {showLoader, loading, notes, getNote} = useContext(FirebaseContext);
+
+    console.info(notes)
+
+    useEffect(() => {
+        showLoader();
+        getNote(id);
+    }, []);
+
+    return (
+        <Fragment>
+            {loading
+                ? <Loader/>
+                : <_Note note={notes[0]} />
+            }
+        </Fragment>
+    )
+};

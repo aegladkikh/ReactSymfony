@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {Link} from 'react-router-dom'
 import {TransitionGroup, CSSTransition} from 'react-transition-group'
 import {AlertContext} from "../context/alert/alertContext";
 import {FirebaseContext} from "../context/firebase/firebaseContext";
@@ -27,7 +28,7 @@ export const Notes = ({notes}) => {
                 >
                     <li className="list-group-item note">
                         <div>
-                            <strong>{note.title}</strong>
+                            <strong><Link to={`/note/${note.id}`}>{note.title}</Link></strong>
                             <small>{note.date}</small>
                         </div>
 
