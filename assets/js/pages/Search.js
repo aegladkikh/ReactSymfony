@@ -101,7 +101,7 @@ export class Search extends Component {
                         </div>
                     </div>
                 </form>
-                <br/>
+                <hr />
                 <div className="shadow-lg p-3 bg-white rounded">Всего найдено записок&nbsp;
                     <span className="badge badge-primary">{this.state.notes.length}</span>
                 </div>
