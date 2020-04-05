@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Fragment, Component} from 'react';
 import Pagination from 'react-bootstrap/Pagination'
 import Axios from "axios";
 // import {useParams} from "react-router-dom";
@@ -13,7 +13,8 @@ export class Search extends Component {
             value: '',
             activePage: 1,
             maxNotes: 0,
-            pagination: []
+            pagination: [],
+            testNotes: []
         };
 
         // const id = useParams().search;
@@ -26,11 +27,25 @@ export class Search extends Component {
     }
 
     componentDidMount() {
+        console.info('Mount');
         this.getNotes()
+        Axios.get('/api/get-notes').then((r) => {
+                this.setState({
+                    testNotes: r.data.items
+                })
+            },
+            (error) => {
+                console.info(error)
+            }
+        );
+    }
+
+    componentDidUpdate() {
+        console.info('update')
     }
 
     componentWillUnmount() {
-
+        console.info('UnMount');
     }
 
     search() {
@@ -77,6 +92,10 @@ export class Search extends Component {
     }
 
     render() {
+        const {testNotes} = this.state;
+
+        console.info(testNotes.length);
+
         return (
             <>
                 <form onSubmit={e => e.preventDefault()}>
@@ -121,6 +140,18 @@ export class Search extends Component {
                                 </div>
                             </li>
                         ))}
+                </ul>
+                <br />
+                <legend>Дополнитлеьные данные</legend>
+                <ul className="list-group shadow-lg">
+                    {testNotes.length === 0 ? '' : testNotes.map(note => (
+                        <li key={note.id} className="list-group-item">
+                            <div>
+                                <strong>{note.title}</strong>
+                                <small>{note.date}</small>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
                 <br/>
                 <Pagination>{this.state.pagination}</Pagination>
