@@ -40,8 +40,10 @@ export class Search extends Component {
         } else {
             this.inputSearch.classList.remove('is-invalid');
         }
-        const notes = this.state.notes.filter(note => note.title === this.state.value);
-        this.setState({notes: notes})
+        this.getNotes().then(() => {
+            const notes = this.state.notes.filter(note => note.title === this.state.value);
+            this.setState({notes: notes})
+        })
     }
 
     clearSearch() {
@@ -50,7 +52,7 @@ export class Search extends Component {
     }
 
     getNotes() {
-        this.fetchNotes().then(response => {
+        return this.fetchNotes().then(response => {
             if (response.data !== null) {
                 const payload = Object.keys(response.data).map((key, i) => {
                     return {
