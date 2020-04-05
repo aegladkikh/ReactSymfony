@@ -115,7 +115,6 @@ export class Search extends Component {
                                     <strong>{note.title}</strong>
                                     <small>{note.date}</small>
                                 </div>
-                                <span className="badge badge-primary badge-pill">0</span>
                             </li>
                         ))}
                 </ul>
