@@ -119,9 +119,8 @@ export class Search extends Component {
                             </li>
                         ))}
                 </ul>
-                <div>
-                    <Pagination>{this.state.pagination}</Pagination>
-                </div>
+                <br/>
+                <Pagination>{this.state.pagination}</Pagination>
             </>
         )
     }
