@@ -6,12 +6,9 @@ import {Loader} from "../components/Loader";
 
 export const Note = () => {
     const id = useParams().id;
-    const {showLoader, loading, notes, getNote} = useContext(FirebaseContext);
-
-    console.info(notes)
+    const {loading, notes, getNote} = useContext(FirebaseContext);
 
     useEffect(() => {
-        showLoader();
         getNote(id);
     }, []);
 
@@ -19,7 +16,7 @@ export const Note = () => {
         <Fragment>
             {loading
                 ? <Loader/>
-                : <_Note note={notes[0]} />
+                : <_Note note={notes}/>
             }
         </Fragment>
     )

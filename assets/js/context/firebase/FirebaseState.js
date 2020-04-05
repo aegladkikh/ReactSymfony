@@ -26,7 +26,6 @@ export const FirebaseState = ({children}) => {
                     id: key
                 }
             });
-
             dispatch({type: FETCH_NOTES, payload});
             return;
         }
@@ -55,8 +54,20 @@ export const FirebaseState = ({children}) => {
     };
 
     const getNote = async id => {
-        await Axios.get(`${url}/notes/${id}.json`);
-        dispatch({type: FETCH_NOTE, payload: id});
+        showLoader();
+        const res = await Axios.get(`${url}/notes/${id}.json`);
+        if (res.data !== null) {
+            const payload = [{
+                ...res.data,
+                id: id
+            }];
+            dispatch({type: FETCH_NOTE, payload});
+            return;
+        }
+
+        const payload = [];
+
+        dispatch({type: FETCH_NOTE, payload})
     };
 
     const removeNote = async id => {

@@ -13,13 +13,13 @@ export const Home = () => {
 
     return (
         <Fragment>
-            <Form />
+            <Form/>
 
             <hr/>
 
             {loading
                 ? <Loader/>
-                : <Notes notes={notes} />
+                : <Notes notes={notes}/>
             }
         </Fragment>
     )

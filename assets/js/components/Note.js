@@ -1,11 +1,14 @@
 import React from 'react';
 
 export const Note = ({note}) => {
-    console.info(note);
+    console.info(note)
+    if (!note.length) {
+        return <p className="center">Не нашел записку</p>
+    }
     return (
         <div>
-            <p>{note.title}</p>
-            <p>{note.date}</p>
+            <p>{note[0].title}</p>
+            <p>{note[0].date}</p>
         </div>
     );
-}
+};
