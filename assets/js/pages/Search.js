@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Pagination from 'react-bootstrap/Pagination'
 import Axios from "axios";
+// import {useParams} from "react-router-dom";
 
 const url = process.env.REACT_APP_DB_URL;
 
@@ -14,6 +15,8 @@ export class Search extends Component {
             maxNotes: 0,
             pagination: []
         };
+
+        // const id = useParams().search;
 
         this.state.pagination.push(
             <Pagination.Item key="1" active={true}>
@@ -55,7 +58,6 @@ export class Search extends Component {
                         id: key
                     }
                 });
-                console.info(payload)
                 this.setState({
                     notes: payload
                 });
@@ -75,7 +77,7 @@ export class Search extends Component {
     render() {
         return (
             <>
-                <form>
+                <form onSubmit={e => e.preventDefault()}>
                     <div className="form-row align-items-center">
                         <div className="col-auto col-7">
                             <label className="sr-only" htmlFor="inputSearch">Поиск</label>
@@ -85,8 +87,8 @@ export class Search extends Component {
                                    className="form-control" id="inputSearch" placeholder="Введите текст для поиска"
                                    aria-describedby="emailHelp"/>
                             {/*<small id="emailHelp" className="form-text text-muted">Поиск заметок в системе.</small>*/}
-                            <div className="valid-feedback">
-                                Looks good!
+                            <div className="invalid-feedback">
+                                Заполниете поле!
                             </div>
                         </div>
                         <div className="col-auto">
@@ -101,7 +103,7 @@ export class Search extends Component {
                         </div>
                     </div>
                 </form>
-                <hr />
+                <hr/>
                 <div className="shadow-lg p-3 bg-white rounded">Всего найдено записок&nbsp;
                     <span className="badge badge-primary">{this.state.notes.length}</span>
                 </div>
