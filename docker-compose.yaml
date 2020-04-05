@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:12.2-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: test1
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    working_dir: /data/postgresql
+    networks:
+      - main
+
+  cache:
+    image: redis:5.0.8-alpine
+    ports:
+      - 6379:6379
+    networks:
+      - main
+
+networks:
+  main:
+
+volumes:
+  pgdata:
