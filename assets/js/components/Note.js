@@ -1,7 +1,6 @@
 import React from 'react';
 
 export const Note = ({note}) => {
-    console.info(note)
     if (!note.length) {
         return <p className="center">Не нашел записку</p>
     }

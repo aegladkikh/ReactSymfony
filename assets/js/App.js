@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import {Home} from "./pages/Home";
 import {About} from "./pages/About";
 import {Note} from "./pages/Note";
+import {Search} from "./pages/Search";
 import {Navbar} from "./components/Navbar";
 import {Alert} from "./components/Alert";
 import {AlertState} from "./context/alert/AlertState";
@@ -24,6 +25,7 @@ export default function App() {
                                 <Alert/>
                                 <Switch>
                                     <Route path={'/'} exact component={Home}/>
+                                    <Route path={'/search'} component={Search}/>
                                     <Route path={'/about'} component={About}/>
                                     <Route path={'/note/:id'} component={Note}/>
                                 </Switch>

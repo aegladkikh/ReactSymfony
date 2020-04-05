@@ -16,6 +16,14 @@ class IndexController extends AbstractController
     }
 
     /**
+     * @Route("/search", name="app.search", methods={"GET", "POST"})
+     */
+    public function search()
+    {
+        return $this->render('pages/index.html.twig');
+    }
+
+    /**
      * @Route("/about", name="app.about", methods={"GET"})
      */
     public function about()

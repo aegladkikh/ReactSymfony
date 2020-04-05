@@ -17,6 +17,12 @@ export const Navbar = () => (
             <li className="nav-item">
                 <NavLink
                     className="nav-link"
+                    to="/search"
+                >Поиск</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink
+                    className="nav-link"
                     to="/about"
                 >О приложение</NavLink>
             </li>

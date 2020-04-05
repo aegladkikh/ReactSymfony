@@ -7,4 +7,4 @@ export const About = () => (
             <p className="lead">Тестовый стенд</p>
         </div>
     </div>
-)
+);

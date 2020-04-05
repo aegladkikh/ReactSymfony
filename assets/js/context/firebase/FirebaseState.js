@@ -35,6 +35,23 @@ export const FirebaseState = ({children}) => {
         dispatch({type: FETCH_NOTES, payload})
     };
 
+    const getNote = async id => {
+        showLoader();
+        const res = await Axios.get(`${url}/notes/${id}.json`);
+        if (res.data !== null) {
+            const payload = [{
+                ...res.data,
+                id: id
+            }];
+            dispatch({type: FETCH_NOTE, payload});
+            return;
+        }
+
+        const payload = [];
+
+        dispatch({type: FETCH_NOTE, payload})
+    };
+
     const addNote = async title => {
         const note = {
             title, date: new Date().toJSON()
@@ -51,23 +68,6 @@ export const FirebaseState = ({children}) => {
         } catch (e) {
             throw new Error(e.message)
         }
-    };
-
-    const getNote = async id => {
-        showLoader();
-        const res = await Axios.get(`${url}/notes/${id}.json`);
-        if (res.data !== null) {
-            const payload = [{
-                ...res.data,
-                id: id
-            }];
-            dispatch({type: FETCH_NOTE, payload});
-            return;
-        }
-
-        const payload = [];
-
-        dispatch({type: FETCH_NOTE, payload})
     };
 
     const removeNote = async id => {
