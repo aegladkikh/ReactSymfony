@@ -33,7 +33,7 @@ export default function App() {
                             <Aside/>
                         </div>
                     </main>
-                    <Footer/>
+                    {/*<Footer/>*/}
                 </BrowserRouter>
             </AlertState>
         </FirebaseState>
