@@ -15,7 +15,7 @@ services:
       - main
 
   cache:
-    image: redis:5.0.8-alpine
+    image: redis:alpine
     ports:
       - 6379:6379
     networks:

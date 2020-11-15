@@ -12,10 +12,6 @@ const counter = document.getElementById('counter');
 const addBtn = document.getElementById('add');
 const subBtn = document.getElementById('sub');
 
-// compose(
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// )
-
 const store = createStore(
   rootReducer,
   compose(
