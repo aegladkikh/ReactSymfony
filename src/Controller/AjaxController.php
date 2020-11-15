@@ -6,12 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class AjaxController
+ * @package App\Controller
+ */
 class AjaxController extends AbstractController
 {
     /**
      * @Route("/api/get-notes", name="ajax.notes", methods={"GET","POST"})
      */
-    public function getNotes()
+    public function getNotes(): JsonResponse
     {
         // return $this->render('raw/notes.html.twig');
         return new JsonResponse(
