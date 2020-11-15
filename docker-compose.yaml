@@ -1,8 +1,24 @@
 version: '3.7'
 
 services:
+  php:
+    image: anatolygladkikh/php7.4.3:prod
+    volumes:
+      - ./:/app
+    working_dir: /app
+    networks:
+      - main
+  web:
+    image: nginx:alpine
+    volumes:
+      - ./public:/app/public
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    networks:
+      - main
   db:
-    image: postgres:alpine
+    image: postgres:12-alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: test1
@@ -13,7 +29,6 @@ services:
     working_dir: /data/postgresql
     networks:
       - main
-
   cache:
     image: redis:alpine
     ports:
