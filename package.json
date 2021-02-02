@@ -4,7 +4,7 @@
         "@babel/preset-env": "^7.12.1",
         "@symfony/webpack-encore": "^0.31.0",
         "autoprefixer": "^10.0.2",
-        "axios": "^0.21.0",
+        "axios": "^0.21.1",
         "bootstrap": "^4.5.3",
         "core-js": "^3.7.0",
         "dotenv": "^8.2.0",
